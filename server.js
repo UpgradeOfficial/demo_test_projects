@@ -4,7 +4,7 @@ const AccessToken = require("twilio").jwt.AccessToken;
 const VideoGrant = AccessToken.VideoGrant;
 const express = require("express");
 const app = express();
-const port = 5000;
+
 
 // use the Express JSON middleware
 app.use(express.json());
@@ -80,7 +80,8 @@ app.use(express.static("public"));
 app.get("/", (req, res) => {
     res.sendFile("public/index.html");
   });
-// Start the Express server
+const port = process.env.PORT || 8000;
+
 app.listen(port, () => {
-  console.log(`Express server running on port ${port}`);
+    console.log(`Server started on port ${port}`);
 });
